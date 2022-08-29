@@ -1,68 +1,69 @@
 @import url("https://fonts.googleapis.com/css2?family=Lobster&display=swap");
+@mixin flexSort($justify, $alignItems) {
+  display: flex;
+  justify-content: $justify;
+  align-items: $alignItems;
+}
 
-.body {
+.main {
   background: #fafafa;
 }
 main {
-  display: flex;
-  justify-content: center;
+  @include flexSort(center, stretch);
   padding: 60px 0 80px 0;
 }
 
 /* header */
 header {
+  @include flexSort(space-around, stretch);
   position: fixed;
   top: 0;
   left: 0;
-  display: flex;
   width: 100%;
-  justify-content: space-around;
   background-color: white;
   padding: 15px 0 15px 0;
   border-bottom: 1px solid #e1e1e1;
-}
-h1 {
-  font-family: "Lobster", cursive;
-  font-size: 28px;
+  h1 {
+    font-family: "Lobster", cursive;
+    font-size: 28px;
+  }
 }
 .bar-search {
   position: relative;
-}
-.bar-search input {
-  width: 260px;
-  padding: 8px 16px 8px 40px;
-  background-color: #efefef;
-  border: none;
-  border-radius: 5px;
-  font-size: 16px;
-  font-weight: lighter;
-}
-.bar-search input:focus {
-  outline: none;
-}
-.img-explore {
-  position: absolute;
-  top: 9px;
-  left: 16px;
-  width: 15px;
+  input {
+    width: 260px;
+    padding: 8px 16px 8px 40px;
+    background-color: #efefef;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: lighter;
+  }
+  input:focus {
+    outline: none;
+  }
+  .img-explore {
+    position: absolute;
+    top: 9px;
+    left: 16px;
+    width: 15px;
+  }
 }
 .list-nav {
   display: flex;
-}
-.list-nav li img {
-  width: 25px;
-  height: 24px;
-  margin: 5px 23px 0 0;
-}
-.img-navProfile {
-  border-radius: 100%;
+  li img {
+    width: 25px;
+    height: 24px;
+    margin: 5px 23px 0 0;
+  }
+  .img-navProfile {
+    border-radius: 100%;
+  }
 }
 
 /* story */
 .box-story {
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
+  @include flexSort(flex-start, center);
   width: 470px;
   height: 120px;
   border: 1px solid #e1e1e1;
@@ -70,29 +71,29 @@ h1 {
   background-color: white;
   padding: 16px;
   margin: 20px 0 20px 0;
+  .name-story {
+    font-size: 12px;
+    padding: 0 0 0 4px;
+  }
+  .img-story {
+    border: 3px solid transparent;
+    background-image: linear-gradient(#fff, #fff),
+      linear-gradient(
+        to right,
+        rgb(186, 22, 201) 0%,
+        rgb(255, 47, 0) 25%,
+        rgb(255, 68, 0) 50%,
+        rgb(252, 180, 47) 90%,
+        rgb(234, 223, 107) 100%
+      );
+    background-origin: border-box;
+    background-clip: content-box, border-box;
+  }
 }
 .img-profile-56px {
   width: 56px;
   border-radius: 100%;
   margin: 0 20px 5px 0;
-}
-.name-story {
-  font-size: 12px;
-  padding: 0 0 0 4px;
-}
-.img-story {
-  border: 3px solid transparent;
-  background-image: linear-gradient(#fff, #fff),
-    linear-gradient(
-      to right,
-      rgb(186, 22, 201) 0%,
-      rgb(255, 47, 0) 25%,
-      rgb(255, 68, 0) 50%,
-      rgb(252, 180, 47) 90%,
-      rgb(234, 223, 107) 100%
-    );
-  background-origin: border-box;
-  background-clip: content-box, border-box;
 }
 
 /* feed */
@@ -104,14 +105,11 @@ h1 {
   overflow: hidden;
 }
 .head-feed {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-.profile-feed {
-  display: flex;
-  align-items: center;
-  padding: 15px;
+  @include flexSort(space-between, center);
+  .profile-feed {
+    @include flexSort(flex-start, center);
+    padding: 15px;
+  }
 }
 .icon-more {
   width: 20px;
@@ -131,8 +129,7 @@ h1 {
   width: 470px;
 }
 .icon-feed {
-  display: flex;
-  justify-content: space-between;
+  @include flexSort(space-between, stretch);
   padding: 15px;
 }
 .img-icon {
@@ -175,26 +172,25 @@ h1 {
 }
 /* 댓글 */
 .box-chat {
+  @include flexSort(flex-start, center);
   border-top: 1px solid #e1e1e1;
-  display: flex;
-  align-items: center;
   padding: 15px;
-}
-.input-chat {
-  width: 350px;
-  border: none;
-}
-.btn-chat {
-  border: none;
-  background-color: transparent;
-  font-weight: bold;
-  color: rgb(0, 149, 246, 0.3);
-}
-.btn-chat-effect {
-  color: rgb(0, 149, 246, 1);
-}
-.btn-chat-effect:hover {
-  cursor: pointer;
+  .input-chat {
+    width: 350px;
+    border: none;
+  }
+  .btn-chat {
+    border: none;
+    background-color: transparent;
+    font-weight: bold;
+    color: rgb(0, 149, 246, 0.3);
+  }
+  .btn-chat-effect {
+    color: rgb(0, 149, 246, 1);
+    &:hover {
+      cursor: pointer;
+    }
+  }
 }
 
 /* 오른쪽 */
@@ -207,56 +203,46 @@ h1 {
   border: 1px solid #efefef;
 }
 .box-myProfile {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  @include flexSort(space-between, center);
   width: 320px;
   margin: 0 0 20px 0;
-}
-.box-myProfile div {
-  display: flex;
-  align-items: center;
-}
-.box-myProfile p {
-  color: #262626;
-  font-weight: bold;
-  font-size: 14px;
+  div {
+    @include flexSort(flex-start, center);
+  }
+  p {
+    color: #262626;
+    font-weight: bold;
+    font-size: 14px;
+  }
 }
 
 .box-recommend {
   width: 320px;
   margin: 0 0 30px 0;
 }
-.box-recommend h2 {
-  color: #828282;
-  font-weight: bold;
-  font-size: 14px;
-}
 .head-recommend {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+  @include flexSort(space-between, center);
   margin: 0 0 15px 0;
-}
-
-.btn-recommend-all {
-  background-color: transparent;
-  border: none;
-  color: #262626;
-  font-weight: bold;
-  font-size: 12px;
+  h2 {
+    color: #828282;
+    font-weight: bold;
+    font-size: 14px;
+  }
+  .btn-recommend-all {
+    background-color: transparent;
+    border: none;
+    color: #262626;
+    font-weight: bold;
+    font-size: 12px;
+  }
 }
 .box-recommend-profile {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+  @include flexSort(space-between, center);
   margin: 0 0 15px 0;
+  .profile-recommend {
+    @include flexSort(flex-start, stretch);
+  }
 }
-.profile-recommend {
-  display: flex;
-  justify-content: flex-start;
-}
-
 .btn-blue {
   background-color: transparent;
   border: none;
@@ -282,9 +268,9 @@ h1 {
   line-height: 18px;
   font-size: 12px;
   color: #c7c7c7;
-}
-.footer-info {
-  margin: 0 0 20px 0;
+  .footer-info {
+    margin: 0 0 20px 0;
+  }
 }
 
 /* id검색 상자 */
@@ -301,36 +287,27 @@ h1 {
   overflow: scroll;
   box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.25);
   padding: 10px;
+  .box-recentSearch {
+    position: relative;
+    .title-recentSearch {
+      position: absolute;
+      color: #262626;
+      font-weight: bold;
+      font-size: 16px;
+      top: 10px;
+      left: 5px;
+      margin: 10px 15px;
+    }
+    .content-recentSearch {
+      position: absolute;
+      color: #8e8e8e;
+      font-size: 14px;
+      font-weight: bold;
+      top: 180px;
+      left: 110px;
+    }
+  }
 }
-.box-recentSearch {
-  position: relative;
-}
-.title-recentSearch {
-  position: absolute;
-  color: #262626;
-  font-weight: bold;
-  font-size: 16px;
-  top: 10px;
-  left: 5px;
-  margin: 10px 15px;
-}
-.content-recentSearch {
-  position: absolute;
-  color: #8e8e8e;
-  font-size: 14px;
-  font-weight: bold;
-  top: 180px;
-  left: 110px;
-}
-/* .box-filteredId-deco {
-  display: inline-block;
-  width: 0;
-  height: 0;
-  border-top: 25px solid transparent;
-  border-right: 30px solid transparent;
-  border-bottom: 25px solid red;
-  border-left: 30px solid transparent;
-} */
 .filteredId {
   /* display: inline-block; */
   font-size: 14px;
@@ -345,9 +322,7 @@ h1 {
   border-radius: 100%;
 }
 .wrapFiltered {
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
+  @include flexSort(flex-start, center);
 }
 .wrapText {
   display: flex;
@@ -373,25 +348,25 @@ h1 {
   border: 1px solid #e1e1e1;
   box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.25);
   padding: 20px;
-}
-.wrap-menu div {
-  display: flex;
+  div {
+    display: flex;
+  }
+  div img {
+    width: 16px;
+    height: 16px;
+    margin: 0 10px 0 0;
+  }
+  div p,
+  p {
+    font-size: 14px;
+    color: #262626;
+  }
 }
 .menu-profile,
 .menu-bookmark,
 .menu-setting,
 .menu-change {
   padding: 0 0 25px 0;
-}
-.wrap-menu div img {
-  width: 16px;
-  height: 16px;
-  margin: 0 10px 0 0;
-}
-.wrap-menu div p,
-.wrap-menu p {
-  font-size: 14px;
-  color: #262626;
 }
 
 /* 미디어쿼리 */
