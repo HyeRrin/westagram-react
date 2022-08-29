@@ -1,10 +1,10 @@
 import React from "react";
-import "../Main/Main.css";
+import "../Main/Main.scss";
 
 const Main = () => {
   return (
     <>
-      <div className="body">
+      <div className="main">
         <header>
           <h1>Westagram</h1>
           <div className="bar-search">
