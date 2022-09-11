@@ -1,6 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Lobster&display=swap");
 
-.login {
+.signup {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -8,19 +8,29 @@
   height: 100vh;
   flex-direction: column;
   background-color: #fafafa;
-  .login-box {
+  .signup-box {
     margin: 0 0 10px 0;
     width: 350px;
     text-align: center;
     border: 1px solid lightgray;
     background-color: white;
-    .login-title {
-      margin: 55px 0;
+    .signup-title {
+      margin: 55px 0 20px 0;
       font-size: 40px;
       font-family: "Lobster", cursive;
     }
-    .login-id,
-    .login-pw {
+    .signup-message {
+      margin: 25px auto;
+      width: 270px;
+      line-height: 22px;
+      font-size: 17px;
+      font-weight: bold;
+      color: #8e8e8e;
+    }
+    .signup-email,
+    .signup-pw,
+    .signup-id,
+    .signup-username {
       display: block;
       width: 270px;
       margin: 10px auto;
@@ -30,11 +40,13 @@
       background-color: #fafafa;
       font-size: 12px;
     }
-    .login-id:focus,
-    .login-pw:focus {
+    .signup-email:focus,
+    .signup-pw:focus,
+    .signup-id:focus,
+    .signup-userName:focus {
       outline: none;
     }
-    .login-btn {
+    .signup-btn {
       width: 270px;
       margin: 10px 0 40px 0;
       padding: 7px;
@@ -43,13 +55,8 @@
       font-weight: bold;
       color: white;
     }
-    .login-btn:hover {
+    .signup-btn:hover {
       cursor: pointer;
-    }
-    .login-findPw {
-      margin: 40px 0 30px 0;
-      color: #004f84;
-      font-size: 12px;
     }
   }
   .signup-box {
