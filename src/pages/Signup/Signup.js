@@ -7,7 +7,6 @@ const Signup = () => {
   const [userName, setUserName] = useState("");
   const [userId, setUserId] = useState("");
   const [password, setPassword] = useState("");
-  const [disabled, setDisabled] = useState(true);
   const navigate = useNavigate();
   const saveEmail = (event) => {
     setEmail(event.target.value);
@@ -21,10 +20,11 @@ const Signup = () => {
   const savePassword = (event) => {
     setPassword(event.target.value);
   };
-  const handleDisabled = () => {
-    let validation = email.includes("@") && password.length > 4;
-    return validation ? setDisabled(false) : setDisabled(true);
-  };
+  const isInputValid =
+    email.includes("@") &&
+    password.length > 0 &&
+    userName.length > 0 &&
+    userId.length > 0;
 
   const checkSignUp = (e) => {
     e.preventDefault();
@@ -72,7 +72,6 @@ const Signup = () => {
             value={email}
             className="signup-email"
             onChange={saveEmail}
-            onKeyUp={handleDisabled}
             type="text"
             placeholder="휴대폰 번호 또는 이메일 주소"
           />
@@ -80,7 +79,6 @@ const Signup = () => {
             value={userName}
             className="signup-username"
             onChange={saveUserName}
-            onKeyUp={handleDisabled}
             type="text"
             placeholder="성명"
           />
@@ -88,7 +86,6 @@ const Signup = () => {
             value={userId}
             className="signup-id"
             onChange={saveUserId}
-            onKeyUp={handleDisabled}
             type="text"
             placeholder="사용자 이름"
           />
@@ -96,18 +93,17 @@ const Signup = () => {
             value={password}
             className="signup-pw"
             onChange={savePassword}
-            onKeyUp={handleDisabled}
             type="password"
             placeholder="비밀번호"
           />
           <button
             style={
-              disabled === true
-                ? { backgroundColor: "rgb(0, 149, 246, 0.3)" }
-                : { backgroundColor: "rgb(0, 149, 246, 1)" }
+              isInputValid
+                ? { backgroundColor: "rgb(0, 149, 246, 1)" }
+                : { backgroundColor: "rgb(0, 149, 246, 0.3)" }
             }
             className="signup-btn"
-            disabled={disabled}
+            disabled={isInputValid}
             onClick={checkSignUp}
           >
             가입
