@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import "../Login/Login.scss";
 
 const Login = () => {
@@ -82,7 +82,9 @@ const Login = () => {
       </div>
       <div className="signup-box">
         <p className="signup-question">계정이 없으신가요?</p>
-        <p className="signup-link">가입하기</p>
+        <Link to="/signup" className="signup-link">
+          가입하기
+        </Link>
       </div>
     </div>
   );
