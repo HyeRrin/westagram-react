@@ -1,21 +1,21 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useState, useRef } from "react";
+import { useNavigate, Link } from "react-router-dom";
 import "../Signup/Signup.scss";
 
 const Signup = () => {
   const [email, setEmail] = useState("");
-  const [userName, setUserName] = useState("");
-  const [userId, setUserId] = useState("");
+  const [name, setName] = useState("");
+  const [nickname, setNickname] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
   const saveEmail = (event) => {
     setEmail(event.target.value);
   };
-  const saveUserName = (event) => {
-    setUserName(event.target.value);
+  const saveName = (event) => {
+    setName(event.target.value);
   };
-  const saveUserId = (event) => {
-    setUserId(event.target.value);
+  const saveNickname = (event) => {
+    setNickname(event.target.value);
   };
   const savePassword = (event) => {
     setPassword(event.target.value);
@@ -23,8 +23,8 @@ const Signup = () => {
   const isInputValid =
     email.includes("@") &&
     password.length > 0 &&
-    userName.length > 0 &&
-    userId.length > 0;
+    name.length > 0 &&
+    nickname.length > 0;
 
   const checkSignUp = (e) => {
     e.preventDefault();
@@ -35,8 +35,8 @@ const Signup = () => {
       },
       body: JSON.stringify({
         email: email,
-        userName: userName,
-        userId: userId,
+        name: name,
+        nickname: nickname,
         password: password,
       }),
     })
@@ -60,32 +60,64 @@ const Signup = () => {
       });
   };
 
+  const [imgFile, setImgFile] = useState("");
+  const imgRef = useRef();
+
+  // 프로필 이미지 추가의 onChange
+  const saveImgFile = () => {
+    const file = imgRef.current.files[0];
+    const reader = new FileReader();
+    reader.onloadend = () => {
+      setImgFile(reader.result);
+    };
+    reader.readAsDataURL(file);
+
+    const formData = new FormData(); // FormData{}
+    formData.append("profileImg", file);
+    for (const keyValue of formData) console.log(keyValue);
+  };
+
   return (
     <div className="signup">
       <div className="signup-box">
         <h1 className="signup-title">Westagram</h1>
-        <p className="signup-message">
-          친구들의 사진과 동영상을 보려면 가입하세요.
-        </p>
+        <img
+          className="signup-profileImg"
+          src={
+            imgFile ? imgFile : `${process.env.PUBLIC_URL}/images/icon/user.png`
+          }
+          alt="프로필 이미지"
+        />
         <form className="form-signup">
+          <label className="signup-profileImg-label" htmlFor="profileImg">
+            프로필 이미지 추가
+          </label>
+          <input
+            className="signup-profileImg-input"
+            type="file"
+            accept="image/*"
+            id="profileImg"
+            onChange={saveImgFile}
+            ref={imgRef}
+          />
           <input
             value={email}
             className="signup-email"
             onChange={saveEmail}
             type="text"
-            placeholder="휴대폰 번호 또는 이메일 주소"
+            placeholder="이메일 주소"
           />
           <input
-            value={userName}
-            className="signup-username"
-            onChange={saveUserName}
+            value={name}
+            className="signup-name"
+            onChange={saveName}
             type="text"
             placeholder="성명"
           />
           <input
-            value={userId}
+            value={nickname}
             className="signup-id"
-            onChange={saveUserId}
+            onChange={saveNickname}
             type="text"
             placeholder="사용자 이름"
           />
@@ -96,6 +128,7 @@ const Signup = () => {
             type="password"
             placeholder="비밀번호"
           />
+
           <button
             style={
               isInputValid
@@ -106,13 +139,15 @@ const Signup = () => {
             disabled={isInputValid}
             onClick={checkSignUp}
           >
-            가입
+            회원가입
           </button>
         </form>
       </div>
       <div className="signup-box">
         <p className="signup-question">계정이 있으신가요?</p>
-        <p className="signup-link">로그인</p>
+        <Link to="/" className="signup-link">
+          로그인
+        </Link>
       </div>
     </div>
   );
