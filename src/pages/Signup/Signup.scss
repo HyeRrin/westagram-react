@@ -28,12 +28,10 @@
     }
     .signup-profileImg-label {
       margin: 5px 0 20px 0;
+      display: inline-block;
       font-weight: bold;
       font-size: 13px;
       color: #0095f6;
-      display: inline-block;
-      line-height: normal;
-      vertical-align: middle;
       cursor: pointer;
     }
     .form-signup input[type="file"] {
