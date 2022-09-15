@@ -305,3 +305,119 @@ main {
     left: 25px;
   }
 }
+
+.addFeed-background {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  @include flexSort(center, center);
+  background-color: rgba(0, 0, 0, 0.6);
+  .addFeed-close-btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    border: none;
+    background-color: transparent;
+    background-image: url("/assets/images/close.png");
+    background-size: 14px;
+    width: 14px;
+    height: 14px;
+    color: white;
+    font-size: 25px;
+  }
+  .addFeed {
+    border-radius: 15px;
+    background-color: white;
+    overflow: hidden;
+    .addFeed-header {
+      padding: 6px 15px;
+      @include flexSort(space-between, stretch);
+      border-bottom: 1px solid #dbdbdb;
+      .addFeed-header-title {
+        padding: 8px 0 0 0;
+        width: 900px;
+        text-align: center;
+        display: inline-block;
+        font: inherit;
+        font-weight: bold;
+      }
+      .addFeed-header-btn {
+        border: none;
+        background-color: transparent;
+        font-size: 14px;
+        font-weight: bold;
+        color: rgb(0, 149, 246);
+      }
+    }
+    .addFeed-content {
+      display: flex;
+      .addFeed-content-img {
+        @include flexSort(center, center);
+        width: 737px;
+        height: 737px;
+        border-right: 1px solid #dbdbdb;
+        .content-img-wrap {
+          @include flexSort(center, center);
+          flex-direction: column;
+        }
+        .content-img-icon {
+          width: 90px;
+          height: 90px;
+        }
+        .content-img-info {
+          margin: 20px;
+          font-size: 22px;
+        }
+        .content-img-label {
+          padding: 10px;
+          display: inline-block;
+          border-radius: 5px;
+          font-weight: bold;
+          font-size: 14px;
+          background-color: #0095f6;
+          color: white;
+          cursor: pointer;
+        }
+        .content-img-input {
+          display: none;
+        }
+        .content-img-preview {
+          margin: 0;
+          width: 737px;
+          height: 737px;
+        }
+      }
+      .addFeed-content-text {
+        width: 300px;
+        .addFeed-content-profile {
+          display: flex;
+          align-items: center;
+        }
+        img {
+          width: 32px;
+          height: 32px;
+          margin: 20px 10px 20px 20px;
+          border-radius: 100%;
+        }
+        .content-text-name {
+          padding: 0 0 7px 0;
+          display: inline-block;
+          font-weight: bold;
+        }
+        .content-text-input {
+          margin: 0 0 0 25px;
+          width: 250px;
+          border: none;
+          font-size: 16px;
+          line-height: 25px;
+          font-family: inherit;
+        }
+        .content-text-input:focus {
+          outline: none;
+        }
+      }
+    }
+  }
+}
